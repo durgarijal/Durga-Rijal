@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Durga Rijal – Architect</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <style>
+    /* ═══════════ THEME VARIABLES */
+    :root {
+      --bg:#f7f4ef; --bg2:#ffffff; --bg3:#ede8e0;
+      --sand:#c9b99a; --terra:#8b5e3c;
+      --charcoal:#2c2a27; --ink:#1a1815; --muted:#7a746c;
+      --nav-bg:rgba(247,244,239,0.9);
+      --card-shadow:0 8px 30px rgba(44,42,39,0.08);
+      --popup-bg:rgba(0,0,0,0.6);
+      --border:rgba(201,185,154,0.3);
+      --foot:#1a1815;
+      --nav-h:70px;
+    }
+    [data-theme="dark"] {
+      --bg:#1a1815; --bg2:#242220; --bg3:#2c2a27;
+      --sand:#a08060; --terra:#c4896e;
+      --charcoal:#d5cfc8; --ink:#f0ebe4; --muted:#9a9590;
+      --nav-bg:rgba(26,24,21,0.93);
+      --card-shadow:0 8px 30px rgba(0,0,0,0.3);
+      --popup-bg:rgba(0,0,0,0.82);
+      --border:rgba(160,128,96,0.22);
+      --foot:#0f0e0c;
+    }
+
+    /* ═══════════ RESET */
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--charcoal);overflow-x:hidden;transition:background .35s,color .35s}
+    ::-webkit-scrollbar{width:5px}
+    ::-webkit-scrollbar-track{background:var(--bg3)}
+    ::-webkit-scrollbar-thumb{background:var(--sand);border-radius:3px}
+
+    /* ═══════════ NAVBAR */
+    nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 5%;background:var(--nav-bg);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);z-index:1000;transition:box-shadow .3s,background .35s}
+    nav.scrolled{box-shadow:0 2px 28px rgba(0,0,0,0.1)}
+    .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--ink);letter-spacing:.04em;text-decoration:none}
+    .nav-links{display:flex;gap:2rem;list-style:none;align-items:center}
+    .nav-links a{font-size:.78rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--charcoal);text-decoration:none;position:relative;padding-bottom:3px;transition:color .25s}
+    .nav-links a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:var(--terra);transition:width .3s}
+    .nav-links a:hover::after,.nav-links a.active::after{width:100%}
+    .nav-links a.active{color:var(--terra)}
+
+    /* Theme toggle pill */
+    .theme-toggle{width:46px;height:24px;border-radius:12px;background:var(--bg3);border:1.5px solid var(--sand);cursor:pointer;position:relative;outline:none;transition:background .35s;flex-shrink:0}
+    .theme-toggle::before{content:'';position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:var(--terra);transition:transform .35s}
+    [data-theme="dark"] .theme-toggle::before{transform:translateX(22px)}
+
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+    .hamburger span{display:block;width:24px;height:2px;background:var(--charcoal);transition:.3s}
+    .nav-right{display:flex;align-items:center;gap:1rem}
+
+    /* Mobile menu */
+    .mobile-menu{display:none;flex-direction:column;position:fixed;top:var(--nav-h);left:0;right:0;background:var(--bg2);padding:1rem 0;box-shadow:0 10px 28px rgba(0,0,0,.12);z-index:999}
+    .mobile-menu.open{display:flex}
+    .mobile-menu a{padding:.85rem 5%;font-size:.84rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--charcoal);text-decoration:none;border-bottom:1px solid var(--border);transition:color .2s}
+    .mobile-menu a:hover{color:var(--terra)}
+
+    /* ═══════════ HERO */
+    #home{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:60px;padding:calc(var(--nav-h)+60px) 8% 80px;position:relative;overflow:hidden}
+    #home::before{content:'ARCHITECT';position:absolute;right:-2%;bottom:10%;font-family:'Cormorant Garamond',serif;font-size:clamp(5rem,12vw,12rem);font-weight:300;color:rgba(139,94,60,0.06);letter-spacing:.15em;pointer-events:none;white-space:nowrap}
+    .hero-greeting{font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:var(--terra);font-weight:500;margin-bottom:1rem;display:flex;align-items:center;gap:.7rem}
+    .hero-greeting::before{content:'';display:inline-block;width:36px;height:1px;background:var(--terra)}
+    .hero-name{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,6vw,5.5rem);font-weight:600;line-height:1.05;color:var(--ink);margin-bottom:.8rem}
+    .hero-role{font-family:'Cormorant Garamond',serif;font-size:clamp(1.1rem,2vw,1.55rem);font-style:italic;color:var(--terra);font-weight:300;margin-bottom:1.8rem}
+    .hero-desc{font-size:.92rem;line-height:1.95;color:var(--muted);max-width:480px;margin-bottom:2.5rem}
+    .hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+    .btn-primary{padding:.82rem 2.1rem;background:var(--terra);color:#fff;font-size:.8rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:2px solid var(--terra);transition:background .3s,color .3s,transform .2s}
+    .btn-primary:hover{background:transparent;color:var(--terra);transform:translateY(-2px)}
+    .btn-secondary{padding:.82rem 2.1rem;background:transparent;color:var(--charcoal);font-size:.8rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:2px solid var(--sand);transition:border-color .3s,color .3s,transform .2s}
+    .btn-secondary:hover{border-color:var(--terra);color:var(--terra);transform:translateY(-2px)}
+    .hero-image-wrap{display:flex;justify-content:center}
+    .hero-image-frame{position:relative;width:min(400px,90%)}
+    .hero-image-frame::before{content:'';position:absolute;top:-16px;left:-16px;right:16px;bottom:16px;border:2px solid var(--sand);z-index:-1}
+    .hero-image-frame::after{content:'';position:absolute;top:16px;left:16px;right:-16px;bottom:-16px;background:var(--bg3);z-index:-2}
+    .hero-image-frame img{width:100%;display:block;aspect-ratio:3/4;object-fit:cover;filter:grayscale(10%) contrast(1.04)}
+    .hero-badge{position:absolute;bottom:-18px;right:-18px;width:100px;height:100px;background:var(--terra);color:#fff;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;animation:spin 18s linear infinite}
+    .hero-badge-num{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:600;line-height:1}
+    .hero-badge-lbl{font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;opacity:.85}
+    @keyframes spin{to{transform:rotate(360deg)}}
+
+    /* ═══════════ SECTIONS */
+    section{padding:100px 8%}
+    .section-tag{font-size:.75rem;letter-spacing:.25em;text-transform:uppercase;color:var(--terra);font-weight:500;margin-bottom:.8rem;display:flex;align-items:center;gap:.7rem}
+    .section-tag::before{content:'';width:28px;height:1px;background:var(--terra)}
+    .section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.9rem,4vw,3.1rem);font-weight:600;color:var(--ink);line-height:1.15;margin-bottom:1.8rem}
+    .divider{width:60px;height:2px;background:var(--sand);margin-bottom:2.4rem}
+
+    /* ═══════════ ABOUT */
+    #about{background:var(--bg2)}
+    .about-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:70px;align-items:start}
+    .about-text p{font-size:.92rem;line-height:2;color:var(--muted);margin-bottom:1.2rem}
+    .about-stats{display:flex;gap:2.4rem;margin-top:2.4rem}
+    .stat-num{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:600;color:var(--terra);line-height:1}
+    .stat-lbl{font-size:.74rem;color:var(--muted);letter-spacing:.08em;margin-top:.3rem}
+    .about-cards{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}
+    .about-card{padding:1.5rem;background:var(--bg);border-left:3px solid var(--sand);transition:border-color .3s,transform .3s}
+    .about-card:hover{border-color:var(--terra);transform:translateX(4px)}
+    .about-card h4{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:600;color:var(--ink);margin-bottom:.4rem}
+    .about-card p{font-size:.82rem;line-height:1.7;color:var(--muted)}
+
+    /* ═══════════ PROJECTS */
+    #projects{background:var(--bg)}
+    .projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1.8rem}
+    .project-card{background:var(--bg2);overflow:hidden;transition:transform .35s,box-shadow .35s;cursor:pointer}
+    .project-card:hover{transform:translateY(-8px);box-shadow:var(--card-shadow)}
+    .project-img-wrap{overflow:hidden}
+    .project-img{width:100%;height:210px;object-fit:cover;display:block;filter:grayscale(15%);transition:filter .4s,transform .4s}
+    .project-card:hover .project-img{filter:none;transform:scale(1.04)}
+    .project-info{padding:1.5rem}
+    .project-cat{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--terra);font-weight:500;margin-bottom:.4rem}
+    .project-title{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:600;color:var(--ink);margin-bottom:.5rem;line-height:1.3}
+    .project-short{font-size:.83rem;line-height:1.7;color:var(--muted);margin-bottom:1rem}
+    .project-open-btn{display:inline-flex;align-items:center;gap:.4rem;font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--terra);font-weight:500;background:none;border:none;cursor:pointer;padding:0;transition:gap .25s}
+    .project-open-btn:hover{gap:.75rem}
+    .project-open-btn::after{content:'→'}
+
+    /* ═══════════ POPUP */
+    .popup-overlay{position:fixed;inset:0;background:var(--popup-bg);z-index:2000;display:flex;align-items:center;justify-content:center;padding:1.5rem;opacity:0;pointer-events:none;transition:opacity .3s}
+    .popup-overlay.open{opacity:1;pointer-events:all}
+    .popup-box{background:var(--bg2);max-width:800px;width:100%;max-height:90vh;overflow-y:auto;position:relative;transform:translateY(30px) scale(.97);transition:transform .35s cubic-bezier(.2,.8,.3,1)}
+    .popup-overlay.open .popup-box{transform:none}
+    .popup-img{width:100%;height:280px;object-fit:cover;display:block}
+    .popup-body{padding:2.2rem}
+    .popup-cat{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--terra);font-weight:500;margin-bottom:.45rem}
+    .popup-title{font-family:'Cormorant Garamond',serif;font-size:1.95rem;font-weight:600;color:var(--ink);margin-bottom:1.2rem;line-height:1.2}
+    .popup-meta{display:flex;gap:2rem;flex-wrap:wrap;margin-bottom:1.5rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border)}
+    .popup-meta-item label{font-size:.66rem;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:.2rem}
+    .popup-meta-item span{font-size:.88rem;font-weight:500;color:var(--charcoal)}
+    .popup-desc{font-size:.91rem;line-height:2;color:var(--muted)}
+    .popup-desc p{margin-bottom:1rem}
+    .popup-close{position:absolute;top:1rem;right:1rem;width:36px;height:36px;background:var(--bg);border:1px solid var(--border);border-radius:50%;font-size:1.05rem;color:var(--charcoal);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,color .2s;z-index:1}
+    .popup-close:hover{background:var(--terra);color:#fff;border-color:var(--terra)}
+    .popup-tags{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1.5rem}
+    .popup-tag{padding:.28rem .82rem;font-size:.7rem;letter-spacing:.07em;border:1.5px solid var(--sand);color:var(--muted)}
+
+    /* ═══════════ SKILLS */
+    #skills{background:var(--bg2)}
+    .skills-layout{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+    .skills-h{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:600;color:var(--ink);margin-bottom:1.6rem}
+    .skill-item{margin-bottom:1.7rem}
+    .skill-header{display:flex;justify-content:space-between;margin-bottom:.5rem}
+    .skill-name{font-size:.86rem;font-weight:500;letter-spacing:.06em;color:var(--charcoal)}
+    .skill-pct{font-size:.8rem;color:var(--terra)}
+    .skill-bar{height:3px;background:var(--bg3);overflow:hidden}
+    .skill-fill{height:100%;background:linear-gradient(90deg,var(--terra),var(--sand));width:0;transition:width 1.3s cubic-bezier(.4,0,.2,1)}
+    .soft-skills{display:flex;flex-wrap:wrap;gap:.7rem}
+    .soft-tag{padding:.4rem 1rem;border:1.5px solid var(--sand);font-size:.78rem;color:var(--charcoal);letter-spacing:.06em;transition:background .25s,color .25s,border-color .25s}
+    .soft-tag:hover{background:var(--terra);color:#fff;border-color:var(--terra)}
+    .tools-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.9rem;margin-top:.5rem}
+    .tool-box{padding:.9rem;text-align:center;background:var(--bg);border-bottom:2px solid transparent;font-size:.8rem;font-weight:500;letter-spacing:.06em;color:var(--charcoal);transition:border-color .25s,transform .25s,background .35s}
+    .tool-box:hover{border-color:var(--terra);transform:translateY(-3px)}
+    .tool-icon{font-size:1.4rem;margin-bottom:.3rem}
+
+    /* ═══════════ TESTIMONIALS */
+    #testimonials{background:var(--bg)}
+    .testimonials-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:1.7rem}
+    .testi-card{background:var(--bg2);padding:1.9rem;position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s}
+    .testi-card:hover{transform:translateY(-5px);box-shadow:var(--card-shadow)}
+    .testi-card::before{content:'\201C';font-family:'Cormorant Garamond',serif;font-size:7rem;font-weight:600;color:rgba(139,94,60,0.09);position:absolute;top:-1rem;left:1rem;line-height:1;pointer-events:none}
+    .testi-text{font-size:.88rem;line-height:1.85;color:var(--muted);margin-bottom:1.3rem}
+    .testi-author{display:flex;align-items:center;gap:.85rem}
+    .testi-avatar{width:44px;height:44px;border-radius:50%;background:var(--bg3);border:2px solid var(--sand);flex-shrink:0;font-family:'Cormorant Garamond',serif;font-size:1.1rem;font-weight:600;color:var(--terra);display:flex;align-items:center;justify-content:center}
+    .testi-name{font-weight:600;font-size:.86rem;color:var(--ink)}
+    .testi-role{font-size:.75rem;color:var(--muted);margin-top:.15rem}
+
+    /* ═══════════ GALLERY */
+    #gallery{background:var(--foot);padding:100px 8%}
+    #gallery .section-tag{color:var(--sand)}
+    #gallery .section-tag::before{background:var(--sand)}
+    #gallery .section-title{color:#f0ebe4}
+    .gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:5px}
+    .gallery-item{overflow:hidden;position:relative;background:#333}
+    .gallery-item:nth-child(1),.gallery-item:nth-child(5){grid-column:span 2;grid-row:span 2}
+    .gallery-ph{width:100%;height:100%;object-fit:cover;filter:brightness(.65) grayscale(25%);transition:filter .4s,transform .4s}
+    .gallery-item:hover .gallery-ph{filter:brightness(.85) grayscale(0%);transform:scale(1.05)}
+    .gallery-label{position:absolute;bottom:0;left:0;right:0;padding:.7rem 1rem;background:linear-gradient(transparent,rgba(26,24,21,.85));font-size:.73rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.8);opacity:0;transition:opacity .3s}
+    .gallery-item:hover .gallery-label{opacity:1}
+
+    /* ═══════════ CONTACT */
+    #contact{background:var(--bg2)}
+    .contact-layout{display:grid;grid-template-columns:1fr 1.4fr;gap:60px;align-items:start}
+    .contact-info h3{font-family:'Cormorant Garamond',serif;font-size:1.75rem;font-weight:600;color:var(--ink);margin-bottom:1rem}
+    .contact-info p{font-size:.9rem;line-height:1.85;color:var(--muted);margin-bottom:2rem}
+    .contact-item{display:flex;gap:1rem;align-items:flex-start;margin-bottom:1.3rem}
+    .contact-icon{width:40px;height:40px;background:var(--bg);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:1rem;color:var(--terra);flex-shrink:0}
+    .contact-lbl{font-size:.71rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
+    .contact-val{font-size:.9rem;color:var(--charcoal);font-weight:500;margin-top:.15rem}
+    .contact-val a{color:inherit;text-decoration:none}
+    .contact-val a:hover{color:var(--terra)}
+    .contact-form{display:flex;flex-direction:column;gap:1.1rem}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}
+    .form-group{display:flex;flex-direction:column;gap:.38rem}
+    .form-group label{font-size:.71rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:500}
+    .form-group input,.form-group textarea{padding:.8rem 1rem;border:1.5px solid var(--border);background:var(--bg);font-family:'DM Sans',sans-serif;font-size:.88rem;color:var(--charcoal);outline:none;resize:vertical;transition:border-color .25s,background .35s,color .35s}
+    .form-group input:focus,.form-group textarea:focus{border-color:var(--terra)}
+    .form-note{font-size:.75rem;color:var(--muted)}
+    .form-submit{align-self:flex-start;padding:.88rem 2.2rem;background:var(--terra);color:#fff;border:2px solid var(--terra);font-family:'DM Sans',sans-serif;font-size:.8rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:background .3s,color .3s,transform .2s}
+    .form-submit:hover{background:transparent;color:var(--terra);transform:translateY(-2px)}
+
+    /* ═══════════ FOOTER */
+    footer{background:var(--foot);color:rgba(255,255,255,.4);padding:3.5rem 8% 2rem}
+    .footer-inner{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;padding-bottom:2.5rem;border-bottom:1px solid rgba(255,255,255,.08)}
+    .footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:600;color:#f0ebe4;letter-spacing:.04em;display:block;margin-bottom:.8rem}
+    .footer-tagline{font-size:.84rem;line-height:1.8;color:rgba(255,255,255,.38);max-width:230px;margin-bottom:1.5rem}
+    .social-links{display:flex;gap:.85rem;margin-top:.3rem}
+    .social-link{width:38px;height:38px;border-radius:50%;border:1.5px solid rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.5);font-size:.88rem;text-decoration:none;transition:background .25s,border-color .25s,color .25s,transform .25s}
+    .social-link:hover{transform:translateY(-3px)}
+    .social-link.fb:hover{background:#1877F2;border-color:#1877F2;color:#fff}
+    .social-link.ig:hover{background:radial-gradient(circle at 30% 110%,#fd5 8%,#f90 22%,#f70 35%,#f15 60%,#c13 75%,#6b1 100%);border-color:#e1306c;color:#fff}
+    .social-link.li:hover{background:#0A66C2;border-color:#0A66C2;color:#fff}
+    .footer-col h4{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.32);font-weight:500;margin-bottom:1.2rem}
+    .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:.65rem}
+    .footer-col ul a{font-size:.84rem;color:rgba(255,255,255,.43);text-decoration:none;transition:color .25s}
+    .footer-col ul a:hover{color:#c9b99a}
+    .footer-bottom{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;padding-top:1.8rem;font-size:.77rem;color:rgba(255,255,255,.28)}
+    .footer-bottom span{color:#c9b99a}
+
+    /* ═══════════ REVEAL */
+    .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s,transform .7s}
+    .reveal.visible{opacity:1;transform:none}
+
+    /* ═══════════ RESPONSIVE */
+    @media(max-width:900px){
+      #home{grid-template-columns:1fr;text-align:center;padding-top:calc(var(--nav-h)+40px)}
+      .hero-greeting{justify-content:center}
+      .hero-desc{margin:0 auto 2.5rem}
+      .hero-btns{justify-content:center}
+      .hero-image-wrap{order:-1}
+      .about-grid,.skills-layout,.contact-layout{grid-template-columns:1fr;gap:40px}
+      .about-cards{grid-template-columns:1fr}
+      .footer-inner{grid-template-columns:1fr 1fr}
+      .nav-links{display:none}
+      .hamburger{display:flex}
+      .about-stats{justify-content:center}
+      .gallery-grid{grid-template-columns:repeat(2,1fr)}
+      .gallery-item:nth-child(1),.gallery-item:nth-child(5){grid-column:span 1;grid-row:span 1}
+      .form-row{grid-template-columns:1fr}
+    }
+    @media(max-width:550px){
+      section{padding:70px 5%}
+      .tools-grid{grid-template-columns:repeat(2,1fr)}
+      .footer-inner{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════════ NAVBAR ════════ -->
+<nav id="navbar">
+  <a href="#home" class="nav-logo">DR</a>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#testimonials">Testimonials</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode"></button></li>
+  </ul>
+  <div class="nav-right">
+    <button class="theme-toggle" id="themeToggleMob" aria-label="Toggle dark mode" style="display:none"></button>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#home"         onclick="closeMobile()">Home</a>
+  <a href="#about"        onclick="closeMobile()">About</a>
+  <a href="#projects"     onclick="closeMobile()">Projects</a>
+  <a href="#skills"       onclick="closeMobile()">Skills</a>
+  <a href="#testimonials" onclick="closeMobile()">Testimonials</a>
+  <a href="#gallery"      onclick="closeMobile()">Gallery</a>
+  <a href="#contact"      onclick="closeMobile()">Contact</a>
+</div>
+
+<!-- ════════ HERO ════════ -->
+<section id="home">
+  <div class="hero-text reveal">
+    <p class="hero-greeting">Namaste, I'm</p>
+    <h1 class="hero-name">Durga<br>Rijal</h1>
+    <p class="hero-role">Architect &amp; Design Visionary</p>
+    <p class="hero-desc">Passionate about designing spaces that merge functionality with aesthetic beauty. Based in Urlabari, Morang — crafting architecture that respects context, culture, and the environment.</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">Get In Touch</a>
+      <a href="#projects" class="btn-secondary">View Projects</a>
+    </div>
+  </div>
+  <div class="hero-image-wrap reveal" style="transition-delay:.2s">
+    <div class="hero-image-frame">
+      <img src="image.jpg" alt="Durga Rijal – Architect"/>
+      <div class="hero-badge"><span class="hero-badge-num">1+</span><span class="hero-badge-lbl">Years Exp.</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ ABOUT ════════ -->
+<section id="about">
+  <div class="about-grid">
+    <div class="reveal">
+      <p class="section-tag">Get To Know Me</p>
+      <h2 class="section-title">About Me</h2>
+      <div class="divider"></div>
+      <div class="about-text">
+        <p>I am an Architect based in Urlabari, Morang, with a strong foundation in both traditional Nepali architectural heritage and contemporary design principles. My work spans residential, commercial, and cultural projects.</p>
+        <p>Beyond blueprints, I believe architecture is storytelling — each structure should narrate the aspirations of those who inhabit it. I integrate sustainable practices, local materials, and innovative structural solutions into every design.</p>
+        <p>Outside the studio, I find inspiration in the eastern Terai landscape, exploring the intersection of nature and the built environment.</p>
+      </div>
+      <div class="about-stats">
+        <div><div class="stat-num">12+</div><div class="stat-lbl">Projects</div></div>
+        <div><div class="stat-num">1+</div><div class="stat-lbl">Years Exp.</div></div>
+        <div><div class="stat-num">12+</div><div class="stat-lbl">Clients</div></div>
+      </div>
+    </div>
+    <div class="reveal" style="transition-delay:.15s">
+      <p class="section-tag" style="margin-top:2.5rem">Expertise</p>
+      <h3 class="section-title" style="font-size:clamp(1.3rem,2.3vw,1.9rem);margin-bottom:1.4rem">Areas of Focus</h3>
+      <div class="about-cards">
+        <div class="about-card"><h4>Residential Design</h4><p>Custom homes tailored to climate, culture, and lifestyle.</p></div>
+        <div class="about-card"><h4>Urban Planning</h4><p>Walkable, green, community-centred neighbourhood design.</p></div>
+        <div class="about-card"><h4>Sustainable Architecture</h4><p>Passive strategies and local materials for low-impact buildings.</p></div>
+        <div class="about-card"><h4>Interior Spatial Design</h4><p>Light, texture, and proportion crafting meaningful interiors.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ PROJECTS ════════ -->
+<section id="projects">
+  <p class="section-tag reveal">My Work</p>
+  <h2 class="section-title reveal">Featured Projects</h2>
+  <div class="divider reveal"></div>
+  <div class="projects-grid">
+
+    <div class="project-card reveal" onclick="openPopup('p1')">
+      <div class="project-img-wrap"><img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=75" alt="Hillside Residence" class="project-img"/></div>
+      <div class="project-info">
+        <p class="project-cat">Residential</p>
+        <h3 class="project-title"> Residence, Urlabari</h3>
+        <p class="project-short">A climate-responsive home blending local stone with modern spatial design for a hillside setting.</p>
+        <button class="project-open-btn">View Details</button>
+      </div>
+    </div>
+
+    <div class="project-card reveal" style="transition-delay:.1s" onclick="openPopup('p2')">
+      <div class="project-img-wrap"><img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=600&q=75" alt="Community Centre" class="project-img"/></div>
+      <div class="project-info">
+        <p class="project-cat">Public Building</p>
+        <h3 class="project-title">Community Centre</h3>
+        <p class="project-short">A multi-purpose civic hub with library, event hall, and lush green courtyard open to all.</p>
+        <button class="project-open-btn">View Details</button>
+      </div>
+    </div>
+
+    <div class="project-card reveal" style="transition-delay:.2s" onclick="openPopup('p3')">
+      <div class="project-img-wrap"><img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=600&q=75" alt="Mixed-Use Complex" class="project-img"/></div>
+      <div class="project-info">
+        <p class="project-cat">Commercial</p>
+        <h3 class="project-title"> Mixed-Use Complex</h3>
+        <p class="project-short">Ground-floor retail and upper-storey apartments optimised for the hot-humid Terai climate.</p>
+        <button class="project-open-btn">View Details</button>
+      </div>
+    </div>
+
+    <div class="project-card reveal" onclick="openPopup('p4')">
+      <div class="project-img-wrap"><img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=600&q=75" alt="Cultural Pavilion" class="project-img"/></div>
+      <div class="project-info">
+        <p class="project-cat">Cultural</p>
+        <h3 class="project-title">Cultural Pavilion, Biratnagar</h3>
+        <p class="project-short">An open-air pavilion celebrating Madhesi heritage through form, pattern, and natural light.</p>
+        <button class="project-open-btn">View Details</button>
+      </div>
+    </div>
+
+    <div class="project-card reveal" style="transition-delay:.1s" onclick="openPopup('p5')">
+      <div class="project-img-wrap"><img src="https://images.unsplash.com/photo-1613977257365-aaae5a9817ff?w=600&q=75" alt="Eco Resort" class="project-img"/></div>
+      <div class="project-info">
+        <p class="project-cat">Hospitality</p>
+        <h3 class="project-title">Eco Resort, Koshi Tappu</h3>
+        <p class="project-short">Bamboo-and-mud bungalows woven into wetland landscape with a zero carbon footprint.</p>
+        <button class="project-open-btn">View Details</button>
+      </div>
+    </div>
+
+    <div class="project-card reveal" style="transition-delay:.2s" onclick="openPopup('p6')">
+      <div class="project-img-wrap"><img src="https://images.unsplash.com/photo-1524758870432-af57e54afa26?w=600&q=75" alt="School Complex" class="project-img"/></div>
+      <div class="project-info">
+        <p class="project-cat">Educational</p>
+        <h3 class="project-title">Primary School Complex, Morang</h3>
+        <p class="project-short">A child-centric campus with shaded play courts, vegetable gardens, and bright classrooms.</p>
+        <button class="project-open-btn">View Details</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ════════ PROJECT POPUP ════════ -->
+<div class="popup-overlay" id="popupOverlay" onclick="closePopupBg(event)">
+  <div class="popup-box" id="popupBox">
+    <button class="popup-close" onclick="closePopup()">✕</button>
+    <img id="popupImg" src="" alt="" class="popup-img"/>
+    <div class="popup-body">
+      <p class="popup-cat"  id="popupCat"></p>
+      <h2 class="popup-title" id="popupTitle"></h2>
+      <div class="popup-meta" id="popupMeta"></div>
+      <div class="popup-desc" id="popupDesc"></div>
+      <div class="popup-tags" id="popupTags"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ SKILLS ════════ -->
+<section id="skills">
+  <p class="section-tag reveal">Technical Proficiency</p>
+  <h2 class="section-title reveal">Skills &amp; Tools</h2>
+  <div class="divider reveal"></div>
+  <div class="skills-layout">
+    <div class="reveal">
+      <h3 class="skills-h">Core Competencies</h3>
+      <div class="skill-item"><div class="skill-header"><span class="skill-name">Architectural Design</span><span class="skill-pct">95%</span></div><div class="skill-bar"><div class="skill-fill" data-width="95"></div></div></div>
+      <div class="skill-item"><div class="skill-header"><span class="skill-name">Construction Documentation</span><span class="skill-pct">88%</span></div><div class="skill-bar"><div class="skill-fill" data-width="88"></div></div></div>
+      <div class="skill-item"><div class="skill-header"><span class="skill-name">Structural Coordination</span><span class="skill-pct">80%</span></div><div class="skill-bar"><div class="skill-fill" data-width="80"></div></div></div>
+      <div class="skill-item"><div class="skill-header"><span class="skill-name">Urban &amp; Site Analysis</span><span class="skill-pct">85%</span></div><div class="skill-bar"><div class="skill-fill" data-width="85"></div></div></div>
+      <div class="skill-item"><div class="skill-header"><span class="skill-name">Sustainable Design</span><span class="skill-pct">78%</span></div><div class="skill-bar"><div class="skill-fill" data-width="78"></div></div></div>
+      <h3 class="skills-h" style="margin-top:2.4rem">Soft Skills</h3>
+      <div class="soft-skills">
+        <span class="soft-tag">Client Consultation</span>
+        <span class="soft-tag">Project Management</span>
+        <span class="soft-tag">Team Leadership</span>
+        <span class="soft-tag">Creative Problem Solving</span>
+        <span class="soft-tag">Technical Presentation</span>
+        <span class="soft-tag">Site Supervision</span>
+      </div>
+    </div>
+    <div class="reveal" style="transition-delay:.15s">
+      <h3 class="skills-h">Software &amp; Tools</h3>
+      <div class="tools-grid">
+        <div class="tool-box"><div class="tool-icon">📐</div>AutoCAD</div>
+        <div class="tool-box"><div class="tool-icon">🏗</div>Revit</div>
+        <div class="tool-box"><div class="tool-icon">🎨</div>SketchUp</div>
+        <div class="tool-box"><div class="tool-icon">🖼</div>Lumion</div>
+        <div class="tool-box"><div class="tool-icon">💡</div>Rhino 3D</div>
+        <div class="tool-box"><div class="tool-icon">📊</div>MS Project</div>
+        <div class="tool-box"><div class="tool-icon">🖌</div>Adobe Suite</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ TESTIMONIALS ════════ -->
+<section id="testimonials">
+  <p class="section-tag reveal">What They Say</p>
+  <h2 class="section-title reveal">Testimonials</h2>
+  <div class="divider reveal"></div>
+  <div class="testimonials-grid">
+    <div class="testi-card reveal">
+      <p class="testi-text">Durga's design sensibility is exceptional. The residence she designed for our family perfectly captures our lifestyle while remaining beautifully simple. Every detail shows deep care and expertise.</p>
+      <div class="testi-author"><div class="testi-avatar">RK</div><div><div class="testi-name">Rudra Tamang </div><div class="testi-role">Homeowner, Urlabari</div></div></div>
+    </div>
+    <div class="testi-card reveal" style="transition-delay:.1s">
+      <p class="testi-text">Working with Durga on the community centre was a pleasure. She listened to community needs, proposed practical sustainable solutions, and delivered remarkably clear construction documents.</p>
+      <div class="testi-author"><div class="testi-avatar">BP</div><div><div class="testi-name">Bhishma Budhathoki</div><div class="testi-role">Ward Chairperson , Urlabari Municipality Ward No :3</div></div></div>
+    </div>
+    <div class="testi-card reveal" style="transition-delay:.2s">
+      <p class="testi-text">Durga brings an impressive combination of technical skill and artistic vision. Her understanding of climate-responsive design is ahead of most practitioners in the region.</p>
+      <div class="testi-author"><div class="testi-avatar">SP</div><div><div class="testi-name">Asst. Prof. Bhumkika Shrestha </div><div class="testi-role"> HOD , Department of Architecture, MBCOE</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ GALLERY ════════ -->
+<section id="gallery">
+  <p class="section-tag reveal">Visual Journey</p>
+  <h2 class="section-title reveal">Project Gallery</h2>
+  <div class="divider reveal" style="background:var(--sand)"></div>
+  <div class="gallery-grid reveal">
+    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=700&q=70" alt="" class="gallery-ph"><div class="gallery-label">Hillside Residence</div></div>
+    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=500&q=70" alt="" class="gallery-ph"><div class="gallery-label">Site Survey</div></div>
+    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1618219944342-824e40a13285?w=500&q=70" alt="" class="gallery-ph"><div class="gallery-label">Interior Study</div></div>
+    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=500&q=70" alt="" class="gallery-ph"><div class="gallery-label">Façade Detail</div></div>
+    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1501183638710-841dd1904471?w=700&q=70" alt="" class="gallery-ph"><div class="gallery-label">Community Centre</div></div>
+    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=500&q=70" alt="" class="gallery-ph"><div class="gallery-label">Scale Model</div></div>
+  </div>
+</section>
+
+<!-- ════════ CONTACT ════════ -->
+<section id="contact">
+  <p class="section-tag reveal">Let's Connect</p>
+  <h2 class="section-title reveal">Contact Me</h2>
+  <div class="divider reveal"></div>
+  <div class="contact-layout">
+    <div class="reveal">
+      <h3>Contact Information</h3>
+      <p>Have a project in mind or simply want to discuss ideas? I'd love to hear from you.</p>
+      <div class="contact-item">
+        <div class="contact-icon">📍</div>
+        <div><div class="contact-lbl">Location</div><div class="contact-val">Urlabari, Morang, Nepal</div></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">✉️</div>
+        <div><div class="contact-lbl">Email</div><div class="contact-val"><a href="mailto:durga7rijal@gmail.com">durga7rijal@gmail.com</a></div></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">🏛</div>
+        <div><div class="contact-lbl">Profession</div><div class="contact-val">Licensed Architect</div></div>
+      </div>
+      <!-- Social links in contact -->
+      <div style="margin-top:1.8rem">
+        <div class="contact-lbl" style="margin-bottom:.8rem">Follow Me</div>
+        <div class="social-links" style="margin-top:0">
+          <a href="https://www.facebook.com/roshan.rizal.731"           target="_blank" rel="noopener" class="social-link fb" aria-label="Facebook"  style="border-color:rgba(44,42,39,.2);color:var(--charcoal)"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/roshanrijal7"              target="_blank" rel="noopener" class="social-link ig" aria-label="Instagram" style="border-color:rgba(44,42,39,.2);color:var(--charcoal)"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.linkedin.com/in/durga-rijal-b386381b4"   target="_blank" rel="noopener" class="social-link li" aria-label="LinkedIn"  style="border-color:rgba(44,42,39,.2);color:var(--charcoal)"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal" style="transition-delay:.15s">
+      <!-- FormSubmit — sends to durga7rijal@gmail.com on first submit FormSubmit will ask to confirm the email -->
+      <form class="contact-form" action="https://formsubmit.co/durga7rijal@gmail.com" method="POST" id="contactForm">
+        <!-- FormSubmit hidden config -->
+        <input type="hidden" name="_subject"  value="✉️ New message from your portfolio website!">
+        <input type="hidden" name="_captcha"  value="false">
+        <input type="hidden" name="_template" value="table">
+        <input type="text"   name="_honey"    style="display:none" tabindex="-1" autocomplete="off">
+        <input type="hidden" name="_autoresponse" value="Thank you for reaching out! Durga Rijal will get back to you shortly.">
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fname">First Name</label>
+            <input type="text"  id="fname" name="First Name"  placeholder="Ram"      required/>
+          </div>
+          <div class="form-group">
+            <label for="lname">Last Name</label>
+            <input type="text"  id="lname" name="Last Name"   placeholder="Shrestha" required/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="Email" placeholder="you@example.com" required/>
+        </div>
+        <div class="form-group">
+          <label for="subject">Subject</label>
+          <input type="text"  id="subject" name="Subject" placeholder="Project enquiry…"/>
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="Message" rows="5" placeholder="Tell me about your project…" required></textarea>
+        </div>
+        <p class="form-note">📬 Your message will be delivered directly to my inbox. I usually reply within 24 hours.</p>
+        <button type="submit" class="form-submit" id="submitBtn">Send Message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ FOOTER ════════ -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <span class="footer-logo">Durga Rijal</span>
+      <p class="footer-tagline">Architect &amp; Designer crafting meaningful spaces in Urlabari, Morang, Nepal.</p>
+      <div class="social-links">
+        <a href="https://www.facebook.com/roshan.rizal.731"         target="_blank" rel="noopener" class="social-link fb" aria-label="Facebook" ><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/roshanrijal7"            target="_blank" rel="noopener" class="social-link ig" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/durga-rijal-b386381b4" target="_blank" rel="noopener" class="social-link li" aria-label="LinkedIn" ><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Get In Touch</h4>
+      <ul>
+        <li><a href="mailto:durga7rijal@gmail.com">durga7rijal@gmail.com</a></li>
+        <li><a href="#contact">Send a Message</a></li>
+        <li><a href="https://www.facebook.com/roshan.rizal.731"         target="_blank" rel="noopener"><i class="fab fa-facebook-f" style="width:14px;margin-right:.4rem"></i>Facebook</a></li>
+        <li><a href="https://www.instagram.com/roshanrijal7"            target="_blank" rel="noopener"><i class="fab fa-instagram" style="width:14px;margin-right:.4rem"></i>Instagram</a></li>
+        <li><a href="https://www.linkedin.com/in/durga-rijal-b386381b4" target="_blank" rel="noopener"><i class="fab fa-linkedin-in" style="width:14px;margin-right:.4rem"></i>LinkedIn</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2025 <span>Durga Rijal</span>. All rights reserved.</p>
+    <div class="social-links" style="margin-top:0">
+      <a href="https://www.facebook.com/roshan.rizal.731"         target="_blank" rel="noopener" class="social-link fb" aria-label="Facebook" ><i class="fab fa-facebook-f"></i></a>
+      <a href="https://www.instagram.com/roshanrijal7"            target="_blank" rel="noopener" class="social-link ig" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.linkedin.com/in/durga-rijal-b386381b4" target="_blank" rel="noopener" class="social-link li" aria-label="LinkedIn" ><i class="fab fa-linkedin-in"></i></a>
+    </div>
+  </div>
+</footer>
+
+<!-- ════════ JAVASCRIPT ════════ -->
+<script>
+/* ── Project popup data ── */
+const projects = {
+  p1:{cat:'Residential',title:'Hillside Residence, Urlabari',img:'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=900&q=80',meta:[['Location','Urlabari, Morang'],['Year','2023'],['Area','2,400 sq ft'],['Status','Completed']],desc:`<p>The Hillside Residence draws character from the gently sloping terrain of Urlabari. The brief called for a home that breathed — channelling cool hill breezes while remaining warm during monsoon season.</p><p>Local stone cladding grounds the building in its landscape, while floor-to-ceiling glazing opens living spaces toward the mountain horizon. A deep verandah on both floors acts as a climatic buffer, filtering light and reducing solar heat gain.</p><p>All structural timber was sourced from certified local sawmills, and the interior planning follows a clear hierarchy — social spaces open onto the garden below, private bedrooms occupy a quieter upper storey.</p>`,tags:['Residential','Sustainable','Local Stone','Passive Ventilation','Timber']},
+  p2:{cat:'Public Building',title:'Morang Community Centre',img:'https://images.unsplash.com/photo-1486325212027-8081e485255e?w=900&q=80',meta:[['Location','Biratnagar, Morang'],['Year','2022'],['Area','8,600 sq ft'],['Status','Completed']],desc:`<p>Commissioned by Urlabari Municipality, this community centre was conceived as a democratic space — belonging equally to schoolchildren in the morning and elderly residents in the evening.</p><p>The programme includes a 250-seat event hall, a public library with reading terrace, three multi-purpose rooms, and a shaded courtyard planted with native trees. The library features a sawtooth roof that admits north light without glare.</p><p>Structurally, local brick and a reinforced concrete frame are designed to exceed Nepal's NBC 105 seismic code.</p>`,tags:['Civic','Public','Courtyard','Seismic-Resistant','Brick','Library']},
+  p3:{cat:'Commercial',title:'Terai Mixed-Use Complex',img:'https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=900&q=80',meta:[['Location','Urlabari'],['Year','2021'],['Area','14,000 sq ft'],['Status','Completed']],desc:`<p>This six-storey building responds directly to the hot-humid Terai climate. Ground and first floors accommodate retail units with deep recessed arcades, creating a shaded colonnade that protects pedestrians from sun and rain.</p><p>Floors two through five contain 18 two-bedroom apartments, each cross-ventilated with private balconies screened by perforated brick panels. The rooftop features a 3,000-litre rainwater harvesting tank, solar water heaters, and a communal garden terrace.</p>`,tags:['Mixed-Use','Commercial','Residential','Colonnade','Rainwater Harvesting','Solar']},
+  p4:{cat:'Cultural',title:'Cultural Pavilion, Biratnagar',img:'https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=900&q=80',meta:[['Location','Biratnagar'],['Year','2022'],['Area','3,200 sq ft'],['Status','Completed']],desc:`<p>The Cultural Pavilion celebrates Madhesi heritage through architectural form, surface pattern, and natural light. The programme called for a flexible open-air venue for music, dance, and community festivals.</p><p>A series of arched bays in local brick, their surfaces incised with motifs from traditional Mithila art, support a tensile fabric roof. A permanent stage faces an amphitheatre lawn accommodating up to 800 visitors, and the pavilion has hosted the Chhath Puja festival and local art exhibitions.</p>`,tags:['Cultural','Pavilion','Mithila Art','Open-Air','Brick','Tensile Roof']},
+  p5:{cat:'Hospitality',title:'Eco Resort, Koshi Tappu',img:'https://images.unsplash.com/photo-1613977257365-aaae5a9817ff?w=900&q=80',meta:[['Location','Koshi Tappu'],['Year','2023'],['Units','12 Bungalows'],['Status','Completed']],desc:`<p>Located on the edge of Koshi Tappu Wildlife Reserve, this eco-resort was designed with a strict mandate: zero net carbon, zero site disturbance, and a building life of at least 50 years using natural and recycled materials.</p><p>The 12 bungalows are constructed from locally harvested bamboo, stabilised compressed earth blocks, and reclaimed timber. Greywater is treated through constructed wetland reed beds, composting toilets eliminate wastewater discharge, and a 30 kWp rooftop solar array makes the resort fully off-grid.</p>`,tags:['Eco','Hospitality','Bamboo','Earth Blocks','Off-Grid','Solar','Wetland']},
+  p6:{cat:'Educational',title:'Primary School Complex, Morang',img:'https://images.unsplash.com/photo-1524758870432-af57e54afa26?w=900&q=80',meta:[['Location','Morang District'],['Year','2020'],['Capacity','600 students'],['Status','Completed']],desc:`<p>This primary school was designed around a simple idea: every child should feel safe, curious, and delighted by their learning environment. The brief called for a seismically resilient, climate-appropriate school for 600 students in Grades 1–8.</p><p>Classrooms face north-northeast, capturing daylight without glare, and have large operable clerestory windows for natural ventilation. The campus includes a science garden, vegetable plot, covered multipurpose court, and a community library open after school hours. Bright murals by local artists animate the corridors and courtyard walls.</p>`,tags:['Education','Primary School','Seismic','Daylight','Community','Vegetable Garden']}
+};
+
+function openPopup(id){
+  const p=projects[id]; if(!p)return;
+  document.getElementById('popupImg').src=p.img;
+  document.getElementById('popupImg').alt=p.title;
+  document.getElementById('popupCat').textContent=p.cat;
+  document.getElementById('popupTitle').textContent=p.title;
+  document.getElementById('popupMeta').innerHTML=p.meta.map(([l,v])=>`<div class="popup-meta-item"><label>${l}</label><span>${v}</span></div>`).join('');
+  document.getElementById('popupDesc').innerHTML=p.desc;
+  document.getElementById('popupTags').innerHTML=p.tags.map(t=>`<span class="popup-tag">${t}</span>`).join('');
+  document.getElementById('popupOverlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closePopup(){document.getElementById('popupOverlay').classList.remove('open');document.body.style.overflow='';}
+function closePopupBg(e){if(e.target===document.getElementById('popupOverlay'))closePopup();}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closePopup();});
+
+/* ── Dark / Light theme ── */
+const html=document.documentElement;
+function applyTheme(t){html.setAttribute('data-theme',t);localStorage.setItem('drTheme',t);}
+document.querySelectorAll('#themeToggle,#themeToggleMob').forEach(btn=>{
+  btn.addEventListener('click',()=>applyTheme(html.getAttribute('data-theme')==='dark'?'light':'dark'));
+});
+applyTheme(localStorage.getItem('drTheme')||'light');
+
+/* ── Navbar shadow ── */
+const navbar=document.getElementById('navbar');
+window.addEventListener('scroll',()=>navbar.classList.toggle('scrolled',scrollY>20));
+
+/* ── Hamburger ── */
+const hamburger=document.getElementById('hamburger'),mobileMenu=document.getElementById('mobileMenu');
+const mobToggle=document.getElementById('themeToggleMob');
+function checkMob(){mobToggle.style.display=window.innerWidth<=900?'block':'none';}
+checkMob(); window.addEventListener('resize',checkMob);
+hamburger.addEventListener('click',()=>{
+  const open=mobileMenu.classList.toggle('open');
+  const s=hamburger.querySelectorAll('span');
+  s[0].style.transform=open?'translateY(7px) rotate(45deg)':'';
+  s[1].style.opacity=open?'0':'1';
+  s[2].style.transform=open?'translateY(-7px) rotate(-45deg)':'';
+});
+function closeMobile(){
+  mobileMenu.classList.remove('open');
+  hamburger.querySelectorAll('span').forEach(s=>{s.style.transform='';s.style.opacity='';});
+}
+
+/* ── Scroll reveal ── */
+const revealObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');revealObs.unobserve(e.target);}});},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(r=>revealObs.observe(r));
+
+/* ── Skill bars ── */
+const skillObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.style.width=e.target.dataset.width+'%';skillObs.unobserve(e.target);}});},{threshold:0.3});
+document.querySelectorAll('.skill-fill').forEach(f=>skillObs.observe(f));
+
+/* ── Active nav link ── */
+const sections=document.querySelectorAll('section[id]');
+const navAnchors=document.querySelectorAll('.nav-links a[href^="#"]');
+window.addEventListener('scroll',()=>{
+  let cur='';
+  sections.forEach(s=>{if(scrollY>=s.offsetTop-120)cur=s.id;});
+  navAnchors.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+cur));
+});
+
+/* ── Form submit feedback ── */
+document.getElementById('contactForm').addEventListener('submit',()=>{
+  const btn=document.getElementById('submitBtn');
+  btn.textContent='Sending…'; btn.disabled=true;
+});
+</script>
+</body>
+</html>
