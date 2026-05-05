@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Durga Rijal – Architect</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='%23f7f4ef'/%3E%3Cg stroke='%238b5e3c' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='12' y='30' width='40' height='26'/%3E%3Cpolygon points='8,30 32,10 56,30'/%3E%3Crect x='26' y='42' width='12' height='14'/%3E%3Crect x='16' y='34' width='8' height='8'/%3E%3Crect x='40' y='34' width='8' height='8'/%3E%3Cline x1='32' y1='10' x2='32' y2='6'/%3E%3Cline x1='32' y1='6' x2='35' y2='9'/%3E%3C/g%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
@@ -40,7 +41,7 @@
     ::-webkit-scrollbar-thumb{background:var(--sand);border-radius:3px}
 
     /* ═══════════ NAVBAR */
-    nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 5%;background:var(--nav-bg);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);z-index:1000;transition:box-shadow .3s,background .35s}
+    nav{position:fixed;top:0;left:0;right:0;height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;padding:0 8%;background:var(--nav-bg);backdrop-filter:blur(14px);border-bottom:1px solid var(--border);z-index:1000;transition:box-shadow .3s,background .35s}
     nav.scrolled{box-shadow:0 2px 28px rgba(0,0,0,0.1)}
     .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:600;color:var(--ink);letter-spacing:.04em;text-decoration:none}
     .nav-links{display:flex;gap:2rem;list-style:none;align-items:center}
@@ -65,14 +66,14 @@
     .mobile-menu a:hover{color:var(--terra)}
 
     /* ═══════════ HERO */
-    #home{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:60px;padding:calc(var(--nav-h)+60px) 8% 80px 8%;margin : 0;position:relative;}
+    #home{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:60px;padding:calc(var(--nav-h)+60px) 8% 80px 8%;margin:0;position:relative;}
     #home::before{content:'ARCHITECT';position:absolute;right:-2%;bottom:10%;font-family:'Cormorant Garamond',serif;font-size:clamp(5rem,12vw,12rem);font-weight:300;color:rgba(139,94,60,0.06);letter-spacing:.15em;pointer-events:none;white-space:nowrap}
-    .hero-greeting{font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:var(--terra);font-weight:500;margin-bottom:1rem;display:flex;align-items:center;gap:.7rem}
+    .hero-greeting{font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:var(--terra);font-weight:500;margin-bottom:1rem;display:flex;align-items:center;gap:.7rem;animation:fadeInUp .8s ease-out}
     .hero-greeting::before{content:'';display:inline-block;width:36px;height:1px;background:var(--terra)}
-    .hero-name{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,6vw,5.5rem);font-weight:600;line-height:1.05;color:var(--ink);margin-bottom:.8rem}
-    .hero-role{font-family:'Cormorant Garamond',serif;font-size:clamp(1.1rem,2vw,1.55rem);font-style:italic;color:var(--terra);font-weight:300;margin-bottom:1.8rem}
-    .hero-desc{font-size:.92rem;line-height:1.95;color:var(--muted);max-width:480px;margin-bottom:2.5rem}
-    .hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+    .hero-name{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,6vw,5.5rem);font-weight:600;line-height:1.05;color:var(--ink);margin-bottom:.8rem;animation:fadeInUp 1s ease-out .15s both}
+    .hero-role{font-family:'Cormorant Garamond',serif;font-size:clamp(1.1rem,2vw,1.55rem);font-style:italic;color:var(--terra);font-weight:300;margin-bottom:1.8rem;animation:fadeInUp .9s ease-out .3s both}
+    .hero-desc{font-size:.92rem;line-height:1.95;color:var(--muted);max-width:480px;margin-bottom:2.5rem;animation:fadeInUp .9s ease-out .45s both}
+    .hero-btns{display:flex;gap:1rem;flex-wrap:wrap;animation:fadeInUp .9s ease-out .6s both}
     .btn-primary{padding:.82rem 2.1rem;background:var(--terra);color:#fff;font-size:.8rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:2px solid var(--terra);transition:background .3s,color .3s,transform .2s}
     .btn-primary:hover{background:transparent;color:var(--terra);transform:translateY(-2px)}
     .btn-secondary{padding:.82rem 2.1rem;background:transparent;color:var(--charcoal);font-size:.8rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:2px solid var(--sand);transition:border-color .3s,color .3s,transform .2s}
@@ -102,19 +103,26 @@
     .stat-num{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:600;color:var(--terra);line-height:1}
     .stat-lbl{font-size:.74rem;color:var(--muted);letter-spacing:.08em;margin-top:.3rem}
     .about-cards{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem}
-    .about-card{padding:1.5rem;background:var(--bg);border-left:3px solid var(--sand);transition:border-color .3s,transform .3s}
-    .about-card:hover{border-color:var(--terra);transform:translateX(4px)}
+    .about-card{padding:1.5rem;background:var(--bg);border-left:3px solid var(--sand);transition:border-color .3s ease,transform .3s ease,box-shadow .3s ease;animation:fadeInUp .7s ease-out both}
+    .about-card:hover{border-color:var(--terra);transform:translateX(6px);box-shadow:0 4px 12px rgba(0,0,0,0.08)}
+    .about-card:nth-child(1){animation-delay:0s}
+    .about-card:nth-child(2){animation-delay:.1s}
+    .about-card:nth-child(3){animation-delay:.2s}
+    .about-card:nth-child(4){animation-delay:.3s}
     .about-card h4{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:600;color:var(--ink);margin-bottom:.4rem}
     .about-card p{font-size:.82rem;line-height:1.7;color:var(--muted)}
 
     /* ═══════════ PROJECTS */
     #projects{background:var(--bg)}
     .projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1.8rem}
-    .project-card{background:var(--bg2);overflow:hidden;transition:transform .35s,box-shadow .35s;cursor:pointer}
+    .project-card{background:var(--bg2);overflow:hidden;transition:transform .35s ease,box-shadow .35s ease;cursor:pointer;animation:slideUp .6s ease-out both;border-radius:4px}
     .project-card:hover{transform:translateY(-8px);box-shadow:var(--card-shadow)}
     .project-img-wrap{overflow:hidden}
-    .project-img{width:100%;height:210px;object-fit:cover;display:block;filter:grayscale(15%);transition:filter .4s,transform .4s}
-    .project-card:hover .project-img{filter:none;transform:scale(1.04)}
+    .project-img{width:100%;height:210px;object-fit:cover;display:block;filter:grayscale(15%);transition:filter .4s ease,transform .4s ease}
+    .project-card:hover .project-img{filter:none;transform:scale(1.05)}
+    .project-card:nth-child(1){animation-delay:0s}
+    .project-card:nth-child(2){animation-delay:.1s}
+    .project-card:nth-child(3){animation-delay:.2s}
     .project-info{padding:1.5rem}
     .project-cat{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--terra);font-weight:500;margin-bottom:.4rem}
     .project-title{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:600;color:var(--ink);margin-bottom:.5rem;line-height:1.3}
@@ -142,6 +150,12 @@
     .popup-tags{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1.5rem}
     .popup-tag{padding:.28rem .82rem;font-size:.7rem;letter-spacing:.07em;border:1.5px solid var(--sand);color:var(--muted)}
 
+    /* ═══════════ BACK TO TOP */
+    .back-to-top{position:fixed;bottom:30px;right:30px;width:48px;height:48px;background:var(--terra);color:#fff;border:none;border-radius:50%;cursor:pointer;opacity:0;visibility:hidden;transition:all .3s ease;z-index:999;box-shadow:0 4px 12px rgba(139,94,60,.3);display:flex;align-items:center;justify-content:center;font-size:1.1rem}
+    .back-to-top.show{opacity:1;visibility:visible}
+    .back-to-top:hover{background:var(--ink);transform:translateY(-2px);box-shadow:0 6px 20px rgba(139,94,60,.4)}
+    .back-to-top:active{transform:translateY(0)}
+
     /* ═══════════ SKILLS */
     #skills{background:var(--bg2)}
     .skills-layout{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
@@ -151,13 +165,13 @@
     .skill-name{font-size:.86rem;font-weight:500;letter-spacing:.06em;color:var(--charcoal)}
     .skill-pct{font-size:.8rem;color:var(--terra)}
     .skill-bar{height:3px;background:var(--bg3);overflow:hidden}
-    .skill-fill{height:100%;background:linear-gradient(90deg,var(--terra),var(--sand));width:0;transition:width 1.3s cubic-bezier(.4,0,.2,1)}
+    .skill-fill{height:100%;background:linear-gradient(90deg,var(--terra),var(--sand));width:0;transition:width 1.3s cubic-bezier(.4,0,.2,1);border-radius:2px}
     .soft-skills{display:flex;flex-wrap:wrap;gap:.7rem}
     .soft-tag{padding:.4rem 1rem;border:1.5px solid var(--sand);font-size:.78rem;color:var(--charcoal);letter-spacing:.06em;transition:background .25s,color .25s,border-color .25s}
     .soft-tag:hover{background:var(--terra);color:#fff;border-color:var(--terra)}
     .tools-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.9rem;margin-top:.5rem}
-    .tool-box{padding:.9rem;text-align:center;background:var(--bg);border-bottom:2px solid transparent;font-size:.8rem;font-weight:500;letter-spacing:.06em;color:var(--charcoal);transition:border-color .25s,transform .25s,background .35s}
-    .tool-box:hover{border-color:var(--terra);transform:translateY(-3px)}
+    .tool-box{padding:.9rem;text-align:center;background:var(--bg);border-bottom:2px solid transparent;font-size:.8rem;font-weight:500;letter-spacing:.06em;color:var(--charcoal);transition:border-color .25s ease,transform .25s ease,background .35s ease,box-shadow .25s ease}
+    .tool-box:hover{border-color:var(--terra);transform:translateY(-4px);box-shadow:0 6px 16px rgba(139,94,60,0.12)}
     .tool-icon{font-size:1.4rem;margin-bottom:.3rem}
 
     /* ═══════════ TESTIMONIALS */
@@ -178,19 +192,27 @@
     #gallery .section-tag::before{background:var(--sand)}
     #gallery .section-title{color:#f0ebe4}
     .gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:5px}
-    .gallery-item{overflow:hidden;position:relative;background:#333}
+    .gallery-item{overflow:hidden;position:relative;background:#333;animation:zoomIn .8s ease-out both;cursor:pointer}
+    .gallery-item:nth-child(1){animation-delay:0s}
+    .gallery-item:nth-child(2){animation-delay:.08s}
+    .gallery-item:nth-child(3){animation-delay:.16s}
+    .gallery-item:nth-child(4){animation-delay:.24s}
+    .gallery-item:nth-child(5){animation-delay:.32s}
+    .gallery-item:nth-child(6){animation-delay:.4s}
     .gallery-item:nth-child(1),.gallery-item:nth-child(5){grid-column:span 2;grid-row:span 2}
-    .gallery-ph{width:100%;height:100%;object-fit:cover;filter:brightness(.65) grayscale(25%);transition:filter .4s,transform .4s}
-    .gallery-item:hover .gallery-ph{filter:brightness(.85) grayscale(0%);transform:scale(1.05)}
-    .gallery-label{position:absolute;bottom:0;left:0;right:0;padding:.7rem 1rem;background:linear-gradient(transparent,rgba(26,24,21,.85));font-size:.73rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.8);opacity:0;transition:opacity .3s}
+    .gallery-ph{width:100%;height:100%;object-fit:cover;filter:brightness(.65) grayscale(25%);transition:filter .5s ease,transform .5s ease}
+    .gallery-item:hover .gallery-ph{filter:brightness(.88) grayscale(0%);transform:scale(1.08)}
+    .gallery-label{position:absolute;bottom:0;left:0;right:0;padding:.7rem 1rem;background:linear-gradient(transparent,rgba(26,24,21,.9));font-size:.73rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.85);opacity:0;transition:opacity .35s ease}
     .gallery-item:hover .gallery-label{opacity:1}
 
     /* ═══════════ CONTACT */
     #contact{background:var(--bg2)}
-    .contact-layout{display:grid;grid-template-columns:1fr 1.4fr;gap:60px;align-items:start}
-    .contact-info h3{font-family:'Cormorant Garamond',serif;font-size:1.75rem;font-weight:600;color:var(--ink);margin-bottom:1rem}
-    .contact-info p{font-size:.9rem;line-height:1.85;color:var(--muted);margin-bottom:2rem}
-    .contact-item{display:flex;gap:1rem;align-items:flex-start;margin-bottom:1.3rem}
+    .contact-layout{display:grid;grid-template-columns:1fr 1.4fr;gap:80px;align-items:start}
+    .contact-info{padding-left:2rem;border-left:3px solid var(--sand)}
+    .contact-info h3{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,2.2rem);font-weight:600;color:var(--ink);margin-bottom:1rem;line-height:1.2}
+    .contact-info p{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-style:italic;line-height:1.9;color:var(--muted);margin-bottom:2.4rem;max-width:500px}
+    .contact-item{display:flex;gap:1.2rem;align-items:flex-start;margin-bottom:1.8rem;padding-left:.3rem}
+    .contact-val{font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--charcoal);font-weight:600;margin-top:.15rem;letter-spacing:.02em}
     .contact-icon{width:40px;height:40px;background:var(--bg);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:1rem;color:var(--terra);flex-shrink:0}
     .contact-lbl{font-size:.71rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
     .contact-val{font-size:.9rem;color:var(--charcoal);font-weight:500;margin-top:.15rem}
@@ -209,6 +231,9 @@
     /* ═══════════ FOOTER */
     footer{background:var(--foot);color:rgba(255,255,255,.4);padding:3.5rem 8% 2rem}
     .footer-inner{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;padding-bottom:2.5rem;border-bottom:1px solid rgba(255,255,255,.08)}
+    .footer-map-section{padding-bottom:2.5rem;border-bottom:1px solid rgba(255,255,255,.08);margin-bottom:0}
+    .footer-map-label{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.32);font-weight:500;margin-bottom:1rem;margin-top:2rem}
+    .footer-map-wrap{border-radius:4px;overflow:hidden;border:1px solid rgba(255,255,255,.1);animation:pulseGlow 4s ease-in-out infinite}
     .footer-logo{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:600;color:#f0ebe4;letter-spacing:.04em;display:block;margin-bottom:.8rem}
     .footer-tagline{font-size:.84rem;line-height:1.8;color:rgba(255,255,255,.38);max-width:230px;margin-bottom:1.5rem}
     .social-links{display:flex;gap:.85rem;margin-top:.3rem}
@@ -228,14 +253,99 @@
     .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s,transform .7s}
     .reveal.visible{opacity:1;transform:none}
 
+    @keyframes fadeInUp{
+      from{opacity:0;transform:translateY(20px)}
+      to{opacity:1;transform:translateY(0)}
+    }
+    @keyframes slideUp{
+      from{opacity:0;transform:translateY(30px)}
+      to{opacity:1;transform:translateY(0)}
+    }
+    @keyframes zoomIn{
+      from{opacity:0;transform:scale(.95)}
+      to{opacity:1;transform:scale(1)}
+    }
+    @keyframes float{
+      0%,100%{transform:translateY(0)}
+      50%{transform:translateY(-10px)}
+    }
+    @keyframes pulseGlow{
+      0%,100%{box-shadow:0 0 0 0 rgba(139,94,60,0.18)}
+      50%{box-shadow:0 0 22px 6px rgba(139,94,60,0.13)}
+    }
+    @keyframes shimmer{
+      0%{background-position:-200% center}
+      100%{background-position:200% center}
+    }
+    @keyframes borderDance{
+      0%,100%{border-color:var(--sand)}
+      50%{border-color:var(--terra)}
+    }
+    @keyframes fadeInLeft{
+      from{opacity:0;transform:translateX(-30px)}
+      to{opacity:1;transform:translateX(0)}
+    }
+    @keyframes fadeInRight{
+      from{opacity:0;transform:translateX(30px)}
+      to{opacity:1;transform:translateX(0)}
+    }
+
+    /* Floating hero image */
+    .hero-image-frame{animation:float 5s ease-in-out infinite}
+
+    /* Pulsing hero badge */
+    .hero-badge{animation:spin 18s linear infinite,pulseGlow 3s ease-in-out infinite}
+
+    /* Shimmer on section titles when hovered */
+    .section-title:hover{
+      background:linear-gradient(90deg,var(--ink) 25%,var(--terra) 50%,var(--ink) 75%);
+      background-size:200% auto;
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
+      animation:shimmer 2s linear infinite
+    }
+
+    /* Animated divider */
+    .divider{animation:borderDance 3s ease-in-out infinite}
+
+    /* Stat numbers pulse */
+    .stat-num{animation:pulseGlow 4s ease-in-out infinite}
+
+    /* Contact icon float */
+    .contact-icon{transition:transform .3s ease}
+    .contact-item:hover .contact-icon{animation:float 1.5s ease-in-out infinite}
+
+    /* Soft-tag wave */
+    .soft-tag{transition:background .25s,color .25s,border-color .25s,transform .2s}
+    .soft-tag:hover{transform:translateY(-3px)}
+
+    /* Tool-box lift */
+    .tool-box:hover{border-color:var(--terra);transform:translateY(-6px) scale(1.03);box-shadow:0 8px 20px rgba(139,94,60,0.15)}
+
+    /* Footer logo shimmer */
+    .footer-logo:hover{
+      background:linear-gradient(90deg,#f0ebe4 20%,var(--terra) 50%,#f0ebe4 80%);
+      background-size:200% auto;
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
+      animation:shimmer 1.8s linear infinite
+    }
+
     /* ═══════════ RESPONSIVE */
+    @media(min-width:1200px){
+      #home{padding-left:12%;padding-right:6%}
+      nav{padding:0 6% 0 12%}
+    }
     @media(max-width:900px){
-      #home{grid-template-columns:1fr;text-align:center;padding-top:calc(var(--nav-h)+40px)}
+      #home{grid-template-columns:1fr;text-align:center;padding-top:calc(var(--nav-h)+40px);padding-left:8%;padding-right:8%;}
       .hero-greeting{justify-content:center}
       .hero-desc{margin:0 auto 2.5rem}
       .hero-btns{justify-content:center}
       .hero-image-wrap{order:-1}
       .about-grid,.skills-layout,.contact-layout{grid-template-columns:1fr;gap:40px}
+      .contact-info{padding-left:1rem;border-left:2px solid var(--sand)}
       .about-cards{grid-template-columns:1fr}
       .footer-inner{grid-template-columns:1fr 1fr}
       .nav-links{display:none}
@@ -249,6 +359,8 @@
       section{padding:70px 5%}
       .tools-grid{grid-template-columns:repeat(2,1fr)}
       .footer-inner{grid-template-columns:1fr}
+      .back-to-top{bottom:20px;right:20px;width:42px;height:42px;font-size:.95rem}
+      .footer-map-wrap iframe{height:200px}
     }
   </style>
 </head>
@@ -466,15 +578,15 @@
   <div class="divider reveal"></div>
   <div class="testimonials-grid">
     <div class="testi-card reveal">
-      <p class="testi-text">Durga's design sensibility is exceptional. The residence He designed for our family perfectly captures our lifestyle while remaining beautifully simple. Every detail shows deep care and expertise.</p>
+      <p class="testi-text">Durga's design sensibility is exceptional. The residence she designed for our family perfectly captures our lifestyle while remaining beautifully simple. Every detail shows deep care and expertise.</p>
       <div class="testi-author"><div class="testi-avatar">RK</div><div><div class="testi-name">Rudra Tamang </div><div class="testi-role">Homeowner, Urlabari</div></div></div>
     </div>
     <div class="testi-card reveal" style="transition-delay:.1s">
-      <p class="testi-text">Working with Durga on the community centre was a pleasure. He listened to community needs, proposed practical sustainable solutions, and delivered remarkably clear construction documents.</p>
+      <p class="testi-text">Working with Durga on the community centre was a pleasure. She listened to community needs, proposed practical sustainable solutions, and delivered remarkably clear construction documents.</p>
       <div class="testi-author"><div class="testi-avatar">BP</div><div><div class="testi-name">Bhishma Budhathoki</div><div class="testi-role">Ward Chairperson , Urlabari Municipality Ward No :3</div></div></div>
     </div>
     <div class="testi-card reveal" style="transition-delay:.2s">
-      <p class="testi-text">Durga brings an impressive combination of technical skill and artistic vision. His understanding of climate-responsive design is ahead of most practitioners in the region.</p>
+      <p class="testi-text">Durga brings an impressive combination of technical skill and artistic vision. Her understanding of climate-responsive design is ahead of most practitioners in the region.</p>
       <div class="testi-author"><div class="testi-avatar">SP</div><div><div class="testi-name">Asst. Prof. Bhumkika Shrestha </div><div class="testi-role"> HOD , Department of Architecture, MBCOE</div></div></div>
     </div>
   </div>
@@ -501,7 +613,7 @@
   <h2 class="section-title reveal">Contact Me</h2>
   <div class="divider reveal"></div>
   <div class="contact-layout">
-    <div class="reveal">
+    <div class="contact-info reveal">
       <h3>Contact Information</h3>
       <p>Have a project in mind or simply want to discuss ideas? I'd love to hear from you.</p>
       <div class="contact-item">
@@ -603,8 +715,16 @@
     </div>
   </div>
 
+  <div class="footer-map-label">📍 Find Me Here — Urlabari, Mangabare, Morang, Nepal</div>
+  <div class="footer-map-wrap" style="margin-bottom:2.5rem">
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3560.3285!2d87.6718!3d26.6673!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e585a75a6c4db9%3A0x9fd60f3f9e09b0ef!2sUrlabari%2C%20Mangabare%2C%20Morang%2C%20Nepal!5e0!3m2!1sen!2snp!4v1700000000000!5m2!1sen!2snp"
+      width="100%" height="280" style="border:0;display:block;filter:invert(90%) hue-rotate(180deg) saturate(0.7)" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Urlabari Mangabare location map">
+    </iframe>
+  </div>
+
   <div class="footer-bottom">
-    <p>© 2026 <span>Durga Rijal</span>. All rights reserved.</p>
+    <p>© 2025 <span>Durga Rijal</span>. All rights reserved.</p>
     <div class="social-links" style="margin-top:0">
       <a href="https://www.facebook.com/roshan.rizal.731"         target="_blank" rel="noopener" class="social-link fb" aria-label="Facebook" ><i class="fab fa-facebook-f"></i></a>
       <a href="https://www.instagram.com/roshanrijal7"            target="_blank" rel="noopener" class="social-link ig" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
@@ -612,6 +732,11 @@
     </div>
   </div>
 </footer>
+
+<!-- ════════ BACK TO TOP BUTTON ════════ -->
+<button class="back-to-top" id="backToTop" aria-label="Back to top">
+  <i class="fas fa-arrow-up"></i>
+</button>
 
 <!-- ════════ JAVASCRIPT ════════ -->
 <script>
@@ -692,6 +817,13 @@ document.getElementById('contactForm').addEventListener('submit',()=>{
   const btn=document.getElementById('submitBtn');
   btn.textContent='Sending…'; btn.disabled=true;
 });
+
+/* ── Back to Top Button ── */
+const backToTopBtn=document.getElementById('backToTop');
+window.addEventListener('scroll',()=>{
+  if(scrollY>300){backToTopBtn.classList.add('show')}else{backToTopBtn.classList.remove('show')}
+});
+backToTopBtn.addEventListener('click',()=>{window.scrollTo({top:0,behavior:'smooth'})});
 </script>
 </body>
 </html>
